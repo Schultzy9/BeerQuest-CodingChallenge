@@ -1,0 +1,48 @@
+.container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.dropdown {
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.suggestion {
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.suggestion:hover {
+  background: #f0f0f0;
+}
+
+@media (max-width: 600px) {
+  .input {
+    font-size: 0.95rem;
+    padding: 0.4rem;
+  }
+  .suggestion {
+    padding: 0.4rem;
+  }
+}
