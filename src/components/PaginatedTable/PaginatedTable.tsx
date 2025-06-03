@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { Brewery } from '../../types/brewery';
 import styles from './PaginatedTable.module.css';
 
@@ -33,9 +35,11 @@ export default function PaginatedTable({ filters, pageSize = 15 }: PaginatedTabl
     return (
       <div style={{ textAlign: 'center', margin: '2rem 0' }}>
         <h2>🐾 Meow Meow 🐾</h2>
-        <img
+        <Image
           src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDlodTU2ZmU1bHVjM3Rpc25oazNqMDh6NTF3b2tjZnh0ZHR2cGlmNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TWNF9uCH4YfhC/giphy.gif"
           alt="Cat drinking beer"
+          width={800}
+          height={600}
         />
       </div>
     );
@@ -59,12 +63,9 @@ export default function PaginatedTable({ filters, pageSize = 15 }: PaginatedTabl
           {breweries.map(brewery => (
             <tr key={brewery.id}>
               <td>
-                <button
-                  className={styles.linkButton}
-                  onClick={() => window.location.href = `/breweries/${brewery.id}`}
-                >
+                <Link href={`/breweries/${brewery.id}`} className={styles.linkButton}>
                   {brewery.name}
-                </button>
+                </Link>
               </td>
               <td>{brewery.brewery_type}</td>
               <td>{brewery.city}</td>
