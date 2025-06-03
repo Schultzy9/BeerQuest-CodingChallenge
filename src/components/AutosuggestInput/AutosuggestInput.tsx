@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import useDebounce from '../../hooks/useDebounce';
+import useDebounce from '../../hooks/useDebounce/useDebounce';
 import { Brewery } from '../../types/brewery';
 
 import styles from './AutosuggestInput.module.css';

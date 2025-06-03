@@ -1,7 +1,15 @@
-import styles from './BreweryDetails.module.css';
-import { Brewery } from '../../types/brewery';
+'use client';
 
-export default function BreweryDetails({ brewery }: { brewery: Brewery }) {
+import styles from './BreweryDetails.module.css';
+import { useBreweryById } from '../../hooks/useBreweryById/useBreweryById';
+
+export default function BreweryDetails({ id }: { id: string }) {
+  const { brewery, loading, error } = useBreweryById(id);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!brewery) return <div>No brewery found.</div>;
+
   return (
     <div className={styles.details}>
       <h2>{brewery.name}</h2>
