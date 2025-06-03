@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Brewery } from '../types/brewery';
+import { Brewery } from '../../types/brewery';
 
 export function useBreweryById(id: string | null) {
   const [brewery, setBrewery] = useState<Brewery | null>(null);

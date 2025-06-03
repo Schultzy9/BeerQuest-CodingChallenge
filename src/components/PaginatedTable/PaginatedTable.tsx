@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Brewery } from '../../types/brewery';
+import { useBreweryTotal } from '../../hooks/useBreweryTotal/useBreweryTotal';
 import styles from './PaginatedTable.module.css';
 
 interface PaginatedTableProps {
@@ -13,6 +14,9 @@ export default function PaginatedTable({ filters, pageSize = 15 }: PaginatedTabl
   const [breweries, setBreweries] = useState<Brewery[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+
+  const totalBreweries = useBreweryTotal(filters);
+  const totalPages = totalBreweries ? Math.ceil(totalBreweries / pageSize) : 1;
 
   useEffect(() => {
     setLoading(true);
@@ -27,6 +31,9 @@ export default function PaginatedTable({ filters, pageSize = 15 }: PaginatedTabl
       .then(data => setBreweries(data))
       .finally(() => setLoading(false));
   }, [filters, page, pageSize]);
+
+  const handlePrevious = () => setPage(p => p - 1);
+  const handleNext = () => setPage((p) => p + 1);
 
   if (
     filters.name.trim().toLowerCase() === 'meow' &&
@@ -87,16 +94,16 @@ export default function PaginatedTable({ filters, pageSize = 15 }: PaginatedTabl
       <div className={styles.pagination}>
         <button
           className={styles.button}
-          onClick={() => setPage(p => Math.max(1, p - 1))}
+          onClick={handlePrevious}
           disabled={page === 1}
         >
           Previous
         </button>
-        <span className={styles.pageInfo}>Page {page}</span>
+        <span className={styles.pageInfo}>Page {page} of {totalPages}</span>
         <button
           className={styles.button}
-          onClick={() => setPage(p => p + 1)}
-          disabled={breweries.length < pageSize}
+          onClick={handleNext}
+          disabled={page >= totalPages}
         >
           Next
         </button>

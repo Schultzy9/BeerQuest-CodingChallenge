@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import useDebounce from '../../hooks/useDebounce/useDebounce';
 import { Brewery } from '../../types/brewery';
 
@@ -11,7 +11,6 @@ export default function AutosuggestInput() {
   const [query, setQuery] = useState('');
   const debouncedQuery = useDebounce(query, 300);
   const [suggestions, setSuggestions] = useState<Brewery[]>([]);
-  const router = useRouter();
 
   useEffect(() => {
     if (debouncedQuery.length < 2) {
@@ -23,11 +22,6 @@ export default function AutosuggestInput() {
       .then(data => setSuggestions(data))
       .catch(() => setSuggestions([]));
   }, [debouncedQuery]);
-
-  const handleSelect = (brewery: Brewery) => {
-    setQuery('');
-    router.push(`/breweries/${brewery.id}`);
-  };
 
   return (
   <div className={styles.container}>
@@ -41,12 +35,8 @@ export default function AutosuggestInput() {
     {suggestions.length > 0 && (
       <ul className={styles.dropdown} id="autosuggest-list">
         {suggestions.map(brewery => (
-          <li
-            key={brewery.id}
-            className={styles.suggestion}
-            onMouseDown={() => handleSelect(brewery)}
-          >
-            {brewery.name}
+          <li key={brewery.id} className={styles.suggestion}>
+            <Link href={`/breweries/${brewery.id}`}>{brewery.name}</Link>
           </li>
         ))}
       </ul>
