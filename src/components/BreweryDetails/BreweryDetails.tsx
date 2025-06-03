@@ -1,9 +1,14 @@
 'use client';
 
+import Link from 'next/link';
 import styles from './BreweryDetails.module.css';
 import { useBreweryById } from '../../hooks/useBreweryById/useBreweryById';
 
-export default function BreweryDetails({ id }: { id: string }) {
+interface BreweryDetailsProps {
+  id: string;
+}
+
+export default function BreweryDetails({ id }: BreweryDetailsProps) {
   const { brewery, loading, error } = useBreweryById(id);
 
   if (loading) return <div>Loading...</div>;
@@ -12,6 +17,9 @@ export default function BreweryDetails({ id }: { id: string }) {
 
   return (
     <div className={styles.details}>
+      <Link href="/" className={styles.backLink}>
+        ← Back to Home
+      </Link>
       <h2>{brewery.name}</h2>
       {brewery.website_url && (
         <div className={styles.infoRow}>
