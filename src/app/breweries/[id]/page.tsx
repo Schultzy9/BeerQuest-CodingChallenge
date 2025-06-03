@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import BreweryDetails from '../../components/BreweryDetails';
+import BreweryDetails from '../../../components/BreweryDetails/BreweryDetails';
 
 async function getBrewery(id: string) {
   const res = await fetch(`https://api.openbrewerydb.org/v1/breweries/${id}`);

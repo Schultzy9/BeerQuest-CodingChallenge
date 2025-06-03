@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Brewery } from '../types/brewery';
+import { Brewery } from '../../types/brewery';
 import styles from './PaginatedTable.module.css';
 
 interface PaginatedTableProps {

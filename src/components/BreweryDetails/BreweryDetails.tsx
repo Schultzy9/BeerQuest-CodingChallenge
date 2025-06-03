@@ -1,5 +1,5 @@
 import styles from './BreweryDetails.module.css';
-import { Brewery } from '../types/brewery';
+import { Brewery } from '../../types/brewery';
 
 export default function BreweryDetails({ brewery }: { brewery: Brewery }) {
   return (

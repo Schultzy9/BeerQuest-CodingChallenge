@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import styles from './page.module.css';
-import AutosuggestInput from './components/AutosuggestInput';
-import FilterPanel from './components/FilterPanel';
-import PaginatedTable from './components/PaginatedTable';
+import AutosuggestInput from '../components/AutosuggestInput/AutosuggestInput';
+import FilterPanel from '../components/FilterPanel/FilterPanel';
+import PaginatedTable from '../components/PaginatedTable/PaginatedTable';
 
 export default function Home() {
 

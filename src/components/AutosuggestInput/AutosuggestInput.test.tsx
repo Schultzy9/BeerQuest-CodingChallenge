@@ -7,7 +7,7 @@ jest.mock('next/navigation', () => ({
   }),
 }));
 
-jest.mock('../utils/useDebounce', () => ({
+jest.mock('../../hooks/useDebounce', () => ({
   __esModule: true,
   default: (v: string) => v,
 }));

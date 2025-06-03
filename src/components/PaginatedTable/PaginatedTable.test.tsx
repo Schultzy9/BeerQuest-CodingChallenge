@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import PaginatedTable from './PaginatedTable';
 
-jest.mock('../types/brewery', () => ({}));
+jest.mock('../../types/brewery', () => ({}));
 
 describe('PaginatedTable', () => {
   beforeEach(() => {
