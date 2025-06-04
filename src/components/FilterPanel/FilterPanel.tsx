@@ -30,7 +30,12 @@ export default function FilterPanel({ onFilter }: FilterPanelProps) {
         placeholder="Filter by name"
         value={search.name}
         onChange={handleChange}
-        className="flex-1 rounded border border-gray-300 bg-white dark:bg-neutral-800 px-4 py-2 text-base text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 outline-none transition"
+        className="
+          flex-1 rounded border border-[var(--primary)] bg-[var(--secondary)]
+          px-4 py-2 text-base text-[var(--primary)]
+          placeholder-gray-400
+          focus:ring-2 focus:ring-[var(--accent)] outline-none transition
+        "
       />
       <input
         name="city"
@@ -38,11 +43,20 @@ export default function FilterPanel({ onFilter }: FilterPanelProps) {
         placeholder="Filter by city"
         value={search.city}
         onChange={handleChange}
-        className="flex-1 rounded border border-gray-300 bg-white dark:bg-neutral-800 px-4 py-2 text-base text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 outline-none transition"
+        className="
+          flex-1 rounded border border-[var(--primary)] bg-[var(--secondary)]
+          px-4 py-2 text-base text-[var(--primary)]
+          placeholder-gray-400
+          focus:ring-2 focus:ring-[var(--accent)] outline-none transition
+        "
       />
       <button
         type="submit"
-        className="rounded bg-blue-600 text-white px-6 py-2 text-base font-semibold hover:bg-blue-700 transition"
+        className="
+          rounded bg-[var(--accent)] text-white px-6 py-2 text-base font-semibold
+          hover:bg-[#fbbf93]
+          transition
+        "
       >
         Go
       </button>

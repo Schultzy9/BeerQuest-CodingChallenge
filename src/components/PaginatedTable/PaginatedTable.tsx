@@ -55,47 +55,35 @@ export default function PaginatedTable({ filters, pageSize = 15 }: PaginatedTabl
   return (
     <div className="w-full overflow-x-auto">
       {loading && <div className="py-4 text-center text-gray-500 dark:text-gray-400">Loading...</div>}
-      <table className="w-full min-w-[400px] border-collapse rounded shadow bg-white dark:bg-neutral-900 text-sm md:text-base">
+      <table className="w-full min-w-[600px] border-collapse rounded shadow bg-white dark:bg-neutral-900 text-xs md:text-base">
         <thead>
           <tr>
-            <th className="px-3 py-2 md:px-4 md:py-2 text-left font-semibold text-gray-700 dark:text-gray-200 whitespace-nowrap">
-              Brewery Name
-            </th>
-            <th className="px-3 py-2 md:px-4 md:py-2 text-left font-semibold text-gray-700 dark:text-gray-200 whitespace-nowrap">
-              City
-            </th>
-            <th className="hidden md:table-cell px-2 py-1 md:px-4 md:py-2 text-left font-semibold text-gray-700 dark:text-gray-200 whitespace-nowrap">
-              Type
-            </th>
-            <th className="hidden md:table-cell px-2 py-1 md:px-4 md:py-2 text-left font-semibold text-gray-700 dark:text-gray-200 whitespace-nowrap">
-              Country
-            </th>
-            <th className="hidden md:table-cell px-2 py-1 md:px-4 md:py-2 text-left font-semibold text-gray-700 dark:text-gray-200 whitespace-nowrap">
-              Website
-            </th>
-            <th className="hidden md:table-cell px-2 py-1 md:px-4 md:py-2 text-left font-semibold text-gray-700 dark:text-gray-200 whitespace-nowrap">
-              Phone
-            </th>
+            <th className="px-2 py-1 md:px-4 md:py-2 text-left font-semibold text-[var(--primary)] whitespace-nowrap">Brewery Name</th>
+            <th className="px-2 py-1 md:px-4 md:py-2 text-left font-semibold text-[var(--primary)] whitespace-nowrap">Type</th>
+            <th className="px-2 py-1 md:px-4 md:py-2 text-left font-semibold text-[var(--primary)] whitespace-nowrap">City</th>
+            <th className="px-2 py-1 md:px-4 md:py-2 text-left font-semibold text-[var(--primary)] whitespace-nowrap">Country</th>
+            <th className="px-2 py-1 md:px-4 md:py-2 text-left font-semibold text-[var(--primary)] whitespace-nowrap">Website</th>
+            <th className="px-2 py-1 md:px-4 md:py-2 text-left font-semibold text-[var(--primary)] whitespace-nowrap">Phone</th>
           </tr>
         </thead>
         <tbody>
           {breweries.map(brewery => (
             <tr key={brewery.id} className="even:bg-gray-50 dark:even:bg-neutral-800">
-              <td className="px-3 py-2 md:px-4 md:py-2 max-w-[160px] md:max-w-[220px] truncate">
-                <Link href={`/breweries/${brewery.id}`} className="text-blue-700 dark:text-blue-300 hover:underline">
+              <td className="px-2 py-1 md:px-4 md:py-2 max-w-[120px] md:max-w-[220px] truncate">
+                <Link href={`/breweries/${brewery.id}`} className="text-[var(--primary)] hover:underline">
                   {brewery.name}
                 </Link>
               </td>
-              <td className="px-3 py-2 md:px-4 md:py-2">{brewery.city}</td>
-              <td className="hidden md:table-cell px-2 py-1 md:px-4 md:py-2">{brewery.brewery_type}</td>
-              <td className="hidden md:table-cell px-2 py-1 md:px-4 md:py-2">{brewery.country}</td>
-              <td className="hidden md:table-cell px-2 py-1 md:px-4 md:py-2">
+              <td className="px-2 py-1 md:px-4 md:py-2">{brewery.brewery_type}</td>
+              <td className="px-2 py-1 md:px-4 md:py-2">{brewery.city}</td>
+              <td className="px-2 py-1 md:px-4 md:py-2">{brewery.country}</td>
+              <td className="px-2 py-1 md:px-4 md:py-2">
                 {brewery.website_url ? (
                   <a
                     href={brewery.website_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                    className="text-[var(--accent)] hover:underline"
                   >
                     Visit
                   </a>
@@ -103,7 +91,7 @@ export default function PaginatedTable({ filters, pageSize = 15 }: PaginatedTabl
                   'N/A'
                 )}
               </td>
-              <td className="hidden md:table-cell px-2 py-1 md:px-4 md:py-2">{brewery.phone || 'N/A'}</td>
+              <td className="px-2 py-1 md:px-4 md:py-2">{brewery.phone || 'N/A'}</td>
             </tr>
           ))}
         </tbody>
@@ -113,19 +101,29 @@ export default function PaginatedTable({ filters, pageSize = 15 }: PaginatedTabl
           <button
             onClick={handlePrevious}
             disabled={page === 1}
-            className="px-4 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 disabled:bg-gray-300 disabled:text-gray-500 transition"
+            className="
+              px-4 py-2 rounded bg-[var(--accent)] text-white font-semibold
+              hover:bg-[#fbbf93]
+              disabled:bg-[var(--secondary)] disabled:text-gray-500
+              transition
+            "
           >
             Previous
           </button>
           <button
             onClick={handleNext}
             disabled={page >= totalPages}
-            className="px-4 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 disabled:bg-gray-300 disabled:text-gray-500 transition"
+            className="
+              px-4 py-2 rounded bg-[var(--accent)] text-white font-semibold
+              hover:bg-[#fbbf93]
+              disabled:bg-[var(--secondary)] disabled:text-gray-500
+              transition
+            "
           >
             Next
           </button>
         </div>
-        <span className="text-sm text-gray-700 dark:text-gray-300">
+        <span className="text-sm text-[var(--primary)]">
           Page {page} of {totalPages}
         </span>
       </div>
